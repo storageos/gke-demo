@@ -22,14 +22,14 @@ sudo -i
 mkdir /var/lib/storageos
 mount --bind /var/lib/storageos /var/lib/storageos
 mount --make-shared /var/lib/storageos
-export CLUSTER_ID=2e59f369-bf84-4524-939b-b23615a8e1d4
+export JOIN=2e59f369-bf84-4524-939b-b23615a8e1d4
 export ADVERTISE_IP=`curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip`
 
 docker run -d --name storageos \
     --restart=always \
     -e HOSTNAME \
     -e ADVERTISE_IP=${ADVERTISE_IP} \
-    -e CLUSTER_ID=${CLUSTER_ID} \
+    -e JOIN=${JOIN} \
     --net=host \
     --pid=host \
     --privileged \
@@ -37,7 +37,7 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.8.1 server
+    storageos/node:0.9.0 server
 
 curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.13/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
