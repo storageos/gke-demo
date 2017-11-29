@@ -1,10 +1,8 @@
 # GKE Install
 
-You *must* use `container-vm` Node image.  The Container-Optimized OS (cos) does not allow mount propagation.
+Create a 3-node cluster with the latest Kubernetes version (at least 1.7.0).
 
-There is now an Ubuntu image available but this hasn't been tested yet.
-
-NOTE:  
+You *must* use `ubuntu` Node image.  The Container-Optimized OS (cos) image does not allow mount propagation.
 
 ## Create Cluster Reservation
 
