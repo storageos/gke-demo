@@ -37,7 +37,7 @@ docker run -d --name storageos \
     -v /run/docker/plugins:/run/docker/plugins \
     storageos/node:0.10.0 server
 
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.13/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.10.0/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 
 ```
